@@ -8,6 +8,9 @@ const styles = {
     marginTop: '0px',
     width: '290px',
   },
+  associationStyle:{
+    marginLeft:'30px',
+  },
 };
 
 
@@ -37,7 +40,7 @@ var PersonComponent = React.createClass({
   render: function(){
     return(
       <div className = "row">
-        <div className = "col-md-2"/>
+        <div className = "col-md-1" style = {styles.associationStyle}/>
         <div className = "col-md-4">
           <TextField
             style = {styles.selectFieldStyle}

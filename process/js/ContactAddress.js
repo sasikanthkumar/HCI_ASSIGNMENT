@@ -11,6 +11,10 @@ const styles = {
   subHeaderStyle:{
     marginLeft: '-16px',
   },
+  titleStyle:{
+    textAlign:'left',
+    marginLeft:'66px',
+  },
 };
 
 var ContactAddress = React.createClass({
@@ -31,27 +35,27 @@ var ContactAddress = React.createClass({
 
 
   handleAddressType: function(e){
-    this.props.handleContactAddress(e.target.value, "addressType");
+    this.props.handleContactAddress(e.target.value, "addressType", this.props.num);
     //this.setState({ addressType: e.target.value });
   },
   handleAddress: function(e){
-      this.props.handleContactAddress(e.target.value, "address");
+      this.props.handleContactAddress(e.target.value, "address", this.props.num);
     //this.setState({address: e.target.value});
   },
   handleCity: function(e){
-      this.props.handleContactAddress(e.target.value, "city");
+      this.props.handleContactAddress(e.target.value, "city", this.props.num);
     //this.setState({city:e.target.value });
   },
   handleStateOrProvince: function(e){
-      this.props.handleContactAddress(e.target.value, "stateOrProvince");
+      this.props.handleContactAddress(e.target.value, "stateOrProvince", this.props.num);
     //this.setState({stateOrProvince:e.target.value});
   },
   handlePostalCode: function(e){
-      this.props.handleContactAddress(e.target.value, "postalCode");
+      this.props.handleContactAddress(e.target.value, "postalCode", this.props.num);
     //this.setState({postalCode:e.target.value});
   },
   handleCountry: function(e){
-    this.props.handleContactAddress(e.target.value, "country");
+    this.props.handleContactAddress(e.target.value, "country", this.props.num);
     //this.setState({country:e.target.value});
   },
 
@@ -59,13 +63,12 @@ var ContactAddress = React.createClass({
     return(
     <div>
       <div className = "row">
-        <div className = "col-md-2" />
-        <div className = "col-md-4">
+        <div className = "col-md-4" style = {styles.titleStyle}>
           <Subheader style = {styles.subHeaderStyle}>Address</Subheader></div>
         <div className = "col-md-2" />
       </div>
       <div className = "row">
-        <div className = "col-md-2" />
+        <div className = "col-md-1" />
         <div className = "col-md-4">
           <TextField
             style = {styles.selectFieldStyle}
@@ -75,20 +78,21 @@ var ContactAddress = React.createClass({
             value = {this.props.content.addressType}
             floatingLabelFixed={true}/>
         </div>
+        <div className = "col-md-1" />
         <div className = "col-md-4">
           <TextField
             style = {styles.selectFieldStyle}
             hintText="B-337 BITS Pilani Hyderbad Campus"
-            floatingLabelText="Address"
+            floatingLabelText="Add"
             onChange = {this.handleAddress}
             value = {this.props.content.address}
             floatingLabelFixed={true}
-            multiLine={true}/>
+            />
         </div>
-        <div className = "col-md-2"/>
+        <div className = "col-md-1"/>
       </div>
       <div className = "row">
-        <div className = "col-md-2"/>
+        <div className = "col-md-1"/>
         <div className = "col-md-4">
           <TextField
             style = {styles.selectFieldStyle}
@@ -98,6 +102,7 @@ var ContactAddress = React.createClass({
             onChange={this.handleCity}
             floatingLabelFixed={true}/>
         </div>
+        <div className = "col-md-1"/>
         <div className = "col-md-4">
           <TextField
             style = {styles.selectFieldStyle}
@@ -107,10 +112,10 @@ var ContactAddress = React.createClass({
             onChange = {this.handleStateOrProvince}
             floatingLabelFixed={true}/>
         </div>
-        <div className = "col-md-2" />
+        <div className = "col-md-1" />
       </div>
       <div className = "row">
-        <div className = "col-md-2" />
+        <div className = "col-md-1" />
         <div className = "col-md-4">
           <TextField
             style = {styles.selectFieldStyle}
@@ -120,6 +125,7 @@ var ContactAddress = React.createClass({
             onChange = {this.handlePostalCode}
             floatingLabelFixed={true} />
         </div>
+        <div className = "col-md-1"/>
         <div className = "col-md-4">
           <TextField
             style = {styles.selectFieldStyle}
@@ -129,7 +135,7 @@ var ContactAddress = React.createClass({
             floatingLabelText="Country"
             floatingLabelFixed={true}/>
         </div>
-        <div className = "col-md-2" />
+        <div className = "col-md-1" />
       </div>
     </div>
     );

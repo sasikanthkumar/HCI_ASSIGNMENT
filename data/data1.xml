@@ -1,57 +1,30 @@
 <?xml version='1.0'?>
-<person>
-    <value>1</value>
-    <voiceContactNumber></voiceContactNumber>
-    <tddTtyContactNumber></tddTtyContactNumber>
-    <facContactNumber></facContactNumber>
-    <emailAddress></emailAddress>
-    <hoursOfService></hoursOfService>
-    <contactInstructions></contactInstructions>
-    <contactPosition></contactPosition>
-    <contactAddress>
-        <addressType></addressType>
-        <address></address>
-        <city></city>
-        <stateOrProvince></stateOrProvince>
-        <postalCode></postalCode>
-        <country></country>
-    </contactAddress>
-    <personOrganization>
-        <contactPerson>abc</contactPerson>
-        <contactOrganization></contactOrganization>
-    </personOrganization>
-</person><?xml version='1.0'?>
 <contactInformation>
-    <value>1</value>
-    <voiceContactNumber></voiceContactNumber>
-    <tddTtyContactNumber></tddTtyContactNumber>
-    <facContactNumber></facContactNumber>
+    <voiceContactNumber>jdbdbh</voiceContactNumber>
+    <tddTtyContactNumber>jhbdjhbdjh</tddTtyContactNumber>
+    <facContactNumber>sdbhb</facContactNumber>
     <emailAddress></emailAddress>
     <hoursOfService></hoursOfService>
     <contactInstructions></contactInstructions>
-    <contactPosition></contactPosition>
+    <contactPosition>HR</contactPosition>
     <contactAddress>
-        <addressType></addressType>
-        <address></address>
-        <city></city>
-        <stateOrProvince></stateOrProvince>
-        <postalCode></postalCode>
+        <addressType>mailing</addressType>
+        <address>B337</address>
+        <city>HYd</city>
+        <stateOrProvince>Telangana</stateOrProvince>
+        <postalCode>500</postalCode>
         <country></country>
     </contactAddress>
     <personOrganization>
-        <contactPerson>xml2</contactPerson>
-        <contactOrganization></contactOrganization>
+        <contactPerson>person</contactPerson>
+        <contactOrganization>Org</contactOrganization>
     </personOrganization>
 </contactInformation><?xml version='1.0'?>
 <contactInformation>
-    <value>1</value>
     <voiceContactNumber></voiceContactNumber>
     <tddTtyContactNumber></tddTtyContactNumber>
     <facContactNumber></facContactNumber>
     <emailAddress></emailAddress>
-    <hoursOfService></hoursOfService>
-    <contactInstructions></contactInstructions>
-    <contactPosition></contactPosition>
     <contactAddress>
         <addressType></addressType>
         <address></address>
@@ -64,196 +37,12 @@
         <contactPerson></contactPerson>
         <contactOrganization></contactOrganization>
     </personOrganization>
-    <numVoiceTelephones>1</numVoiceTelephones>
-    <numVoiceTelephones>2</numVoiceTelephones>
-    <numVoiceTelephones>3</numVoiceTelephones>
-    <numVoiceTelephones>4</numVoiceTelephones>
 </contactInformation><?xml version='1.0'?>
 <contactInformation>
-    <value>1</value>
-    <voiceContactNumber>test</voiceContactNumber>
-    <voiceContactNumber>hahah</voiceContactNumber>
-    <voiceContactNumber>lol</voiceContactNumber>
-    <voiceContactNumber>jdjdnd</voiceContactNumber>
-    <tddTtyContactNumber></tddTtyContactNumber>
-    <facContactNumber></facContactNumber>
-    <emailAddress></emailAddress>
-    <hoursOfService></hoursOfService>
-    <contactInstructions></contactInstructions>
-    <contactPosition></contactPosition>
-    <contactAddress>
-        <addressType></addressType>
-        <address></address>
-        <city></city>
-        <stateOrProvince></stateOrProvince>
-        <postalCode></postalCode>
-        <country></country>
-    </contactAddress>
-    <personOrganization>
-        <contactPerson></contactPerson>
-        <contactOrganization></contactOrganization>
-    </personOrganization>
-    <numVoiceTelephones>1</numVoiceTelephones>
-    <numVoiceTelephones>2</numVoiceTelephones>
-    <numVoiceTelephones>3</numVoiceTelephones>
-    <numVoiceTelephones>4</numVoiceTelephones>
-</contactInformation><?xml version='1.0'?>
-<contactInformation>
-    <value>1</value>
-    <voiceContactNumber>rtrtrt</voiceContactNumber>
-    <tddTtyContactNumber>ttdttu</tddTtyContactNumber>
-    <tddTtyContactNumber>gggjujn</tddTtyContactNumber>
-    <tddTtyContactNumber>uyuyuyu</tddTtyContactNumber>
-    <facContactNumber></facContactNumber>
-    <emailAddress></emailAddress>
-    <hoursOfService></hoursOfService>
-    <contactInstructions></contactInstructions>
-    <contactPosition></contactPosition>
-    <contactAddress>
-        <addressType></addressType>
-        <address></address>
-        <city></city>
-        <stateOrProvince></stateOrProvince>
-        <postalCode></postalCode>
-        <country></country>
-    </contactAddress>
-    <personOrganization>
-        <contactPerson></contactPerson>
-        <contactOrganization></contactOrganization>
-    </personOrganization>
-    <numVoiceTelephones>1</numVoiceTelephones>
-    <numTddTtyTelephones>1</numTddTtyTelephones>
-    <numTddTtyTelephones>2</numTddTtyTelephones>
-    <numTddTtyTelephones>3</numTddTtyTelephones>
-</contactInformation><?xml version='1.0'?>
-<contactInformation>
-    <value>1</value>
-    <voiceContactNumber></voiceContactNumber>
-    <tddTtyContactNumber></tddTtyContactNumber>
-    <facContactNumber>fac1</facContactNumber>
-    <facContactNumber>fac2</facContactNumber>
-    <facContactNumber>fac3</facContactNumber>
-    <facContactNumber>fac4</facContactNumber>
-    <emailAddress></emailAddress>
-    <hoursOfService></hoursOfService>
-    <contactInstructions></contactInstructions>
-    <contactPosition></contactPosition>
-    <contactAddress>
-        <addressType></addressType>
-        <address></address>
-        <city></city>
-        <stateOrProvince></stateOrProvince>
-        <postalCode></postalCode>
-        <country></country>
-    </contactAddress>
-    <personOrganization>
-        <contactPerson></contactPerson>
-        <contactOrganization></contactOrganization>
-    </personOrganization>
-    <numVoiceTelephones>1</numVoiceTelephones>
-    <numTddTtyTelephones>1</numTddTtyTelephones>
-    <numFacTelephones>1</numFacTelephones>
-    <numFacTelephones>2</numFacTelephones>
-    <numFacTelephones>3</numFacTelephones>
-    <numFacTelephones>4</numFacTelephones>
-</contactInformation><?xml version='1.0'?>
-<contactInformation>
-    <value>1</value>
-    <voiceContactNumber></voiceContactNumber>
-    <tddTtyContactNumber></tddTtyContactNumber>
-    <facContactNumber>fac1</facContactNumber>
-    <facContactNumber>fac2</facContactNumber>
-    <facContactNumber>fac3</facContactNumber>
-    <facContactNumber></facContactNumber>
-    <emailAddress></emailAddress>
-    <hoursOfService></hoursOfService>
-    <contactInstructions></contactInstructions>
-    <contactPosition></contactPosition>
-    <contactAddress>
-        <addressType></addressType>
-        <address></address>
-        <city></city>
-        <stateOrProvince></stateOrProvince>
-        <postalCode></postalCode>
-        <country></country>
-    </contactAddress>
-    <personOrganization>
-        <contactPerson></contactPerson>
-        <contactOrganization></contactOrganization>
-    </personOrganization>
-    <numVoiceTelephones>1</numVoiceTelephones>
-    <numTddTtyTelephones>1</numTddTtyTelephones>
-    <numFacTelephones>1</numFacTelephones>
-    <numFacTelephones>2</numFacTelephones>
-    <numFacTelephones>3</numFacTelephones>
-    <numFacTelephones>4</numFacTelephones>
-</contactInformation><?xml version='1.0'?>
-<contactInformation>
-    <value>1</value>
-    <voiceContactNumber></voiceContactNumber>
-    <tddTtyContactNumber></tddTtyContactNumber>
-    <facContactNumber>fac1</facContactNumber>
-    <facContactNumber>fac2</facContactNumber>
-    <facContactNumber>fac3</facContactNumber>
-    <emailAddress></emailAddress>
-    <hoursOfService></hoursOfService>
-    <contactInstructions></contactInstructions>
-    <contactPosition></contactPosition>
-    <contactAddress>
-        <addressType></addressType>
-        <address></address>
-        <city></city>
-        <stateOrProvince></stateOrProvince>
-        <postalCode></postalCode>
-        <country></country>
-    </contactAddress>
-    <personOrganization>
-        <contactPerson></contactPerson>
-        <contactOrganization></contactOrganization>
-    </personOrganization>
-    <numVoiceTelephones>1</numVoiceTelephones>
-    <numTddTtyTelephones>1</numTddTtyTelephones>
-    <numFacTelephones>1</numFacTelephones>
-    <numFacTelephones>2</numFacTelephones>
-    <numFacTelephones>3</numFacTelephones>
-</contactInformation><?xml version='1.0'?>
-<contactInformation>
-    <value>1</value>
-    <voiceContactNumber></voiceContactNumber>
-    <tddTtyContactNumber></tddTtyContactNumber>
-    <facContactNumber></facContactNumber>
-    <emailAddress>Email1</emailAddress>
-    <emailAddress>Email3</emailAddress>
-    <hoursOfService></hoursOfService>
-    <contactInstructions></contactInstructions>
-    <contactPosition></contactPosition>
-    <contactAddress>
-        <addressType></addressType>
-        <address></address>
-        <city></city>
-        <stateOrProvince></stateOrProvince>
-        <postalCode></postalCode>
-        <country></country>
-    </contactAddress>
-    <personOrganization>
-        <contactPerson></contactPerson>
-        <contactOrganization></contactOrganization>
-    </personOrganization>
-    <numVoiceTelephones>1</numVoiceTelephones>
-    <numTddTtyTelephones>1</numTddTtyTelephones>
-    <numFacTelephones>1</numFacTelephones>
-    <numEmailAddress>1</numEmailAddress>
-    <numEmailAddress>2</numEmailAddress>
-</contactInformation><?xml version='1.0'?>
-<contactInformation>
-    <value>1</value>
     <voiceContactNumber></voiceContactNumber>
     <tddTtyContactNumber></tddTtyContactNumber>
     <facContactNumber></facContactNumber>
     <emailAddress></emailAddress>
-    <hoursOfService>5:00-9:00</hoursOfService>
-    <contactInstructions>Early morning</contactInstructions>
-    <contactPosition></contactPosition>
     <contactAddress>
         <addressType></addressType>
         <address></address>
@@ -266,8 +55,22 @@
         <contactPerson></contactPerson>
         <contactOrganization></contactOrganization>
     </personOrganization>
-    <numVoiceTelephones>1</numVoiceTelephones>
-    <numTddTtyTelephones>1</numTddTtyTelephones>
-    <numFacTelephones>1</numFacTelephones>
-    <numEmailAddress>1</numEmailAddress>
+</contactInformation><?xml version='1.0'?>
+<contactInformation>
+    <voiceContactNumber></voiceContactNumber>
+    <tddTtyContactNumber></tddTtyContactNumber>
+    <facContactNumber></facContactNumber>
+    <emailAddress></emailAddress>
+    <contactAddress>
+        <addressType></addressType>
+        <address></address>
+        <city></city>
+        <stateOrProvince></stateOrProvince>
+        <postalCode></postalCode>
+        <country></country>
+    </contactAddress>
+    <personOrganization>
+        <contactPerson></contactPerson>
+        <contactOrganization></contactOrganization>
+    </personOrganization>
 </contactInformation>

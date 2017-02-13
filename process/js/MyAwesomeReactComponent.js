@@ -27,6 +27,9 @@ const styles = {
     marginLeft:'0px',
     marginBottom:'16px',
   },
+  saveClearBtnsStyle:{
+    marginLeft:'34px',
+  },
   clearBtnStyle:{
     marginTop:'16px',
     marginLeft:'24px',
@@ -49,9 +52,19 @@ const styles = {
     display: 'inline-table',
     width:'',
   },
+  contactInstructionsStyle:{
+    marginLeft:'-24px',
+    paddingLeft:'60px',
+  },
+  hoursOfServiceStyle:{
+    marginLeft:'23px',
+  },
   selectFieldStyle:{
     marginTop: '16px',
     width: '290px',
+  },
+  associationStyle:{
+    marginLeft:'30px',
   },
   textAlignCenterStyle:{
     textAlign:'center',
@@ -67,13 +80,28 @@ const styles = {
     backgroundColor:'#fff',
 
   },
+  contactInfoMd1Style:{
+    marginLeft:'37px',
+  },
   colMd10Style:{
     textAlign:'right',
     paddingRight:'0px',
   },
+  colMd9Style:{
+    textAlign:'right',
+    paddingRight:'0px',
+    marginLeft:'50px',
+  },
   colMd1Style:{
     paddingTop:'24px',
     paddingLeft:'0px',
+  },
+  colMd1StyleAddress:{
+    paddingTop:'224px',
+    paddingLeft:'0px',
+  },
+  contactInformationTitle:{
+    marginLeft:'-5px',
   },
 };
 
@@ -89,12 +117,13 @@ var MyAwesomeReactComponent = React.createClass({
       hoursOfService:'',
       contactInstructions:'',
       contactPosition:'',
-      contactAddress:{addressType:'', address:'', city:'', stateOrProvince:'', postalCode:'', country:''},
+      contactAddress:[{addressType:'', address:'', city:'', stateOrProvince:'', postalCode:'', country:''}],
       personOrganization:{contactPerson:'', contactOrganization:''},
       numVoiceTelephones:[1],
       numTddTtyTelephones:[1],
       numFacTelephones:[1],
       numEmailAddress:[1],
+      numContactAddress:[1],
     }
   },
 
@@ -116,6 +145,7 @@ var MyAwesomeReactComponent = React.createClass({
       tddTtyContactNumber: newTddTtyContactNumber,
     });
   },
+
 
   handleFacAddBtn: function(i){
     var newNumFacTelephones = this.state.numFacTelephones;
@@ -150,6 +180,22 @@ var MyAwesomeReactComponent = React.createClass({
       emailAddress: newEmailAddress,
     });
   },
+  handleContactAddressAddBtn: function(i){
+    var newNumContactAddress = this.state.numContactAddress;
+    newNumContactAddress.push(i+1);
+    console.log(newNumContactAddress);
+    //var newNumVoiceTelephones = this.state.numVoiceTelephones;
+    //newNumVoiceTelephones = newNumVoiceTelephones+1;
+
+    var newContactAddress = this.state.contactAddress;
+    newContactAddress.push({addressType:'', address:'', city:'', stateOrProvince:'', postalCode:'', country:''});
+    console.log(this.state.contactAddress);
+    console.log(newContactAddress);
+    this.setState({
+      numContactAddress: newNumContactAddress,
+      contactAddress: newContactAddress,
+    });
+  },
   handleVoiceAddBtn: function(i){
     console.log("index = ");
     console.log(i);
@@ -169,6 +215,22 @@ var MyAwesomeReactComponent = React.createClass({
     });
   },
 
+  handleContactAddressClearBtn: function(i){
+    var newNumContactAddress = this.state.numContactAddress;
+    newNumContactAddress.pop();
+    console.log(newNumContactAddress);
+
+    var newContactAddress = this.state.contactAddress;
+    newContactAddress.splice(i-1,1);
+
+    //console.log(evt);
+    //var newNumVoiceTelephones = this.state.numVoiceTelephones;
+    //newNumVoiceTelephones = newNumVoiceTelephones-1;
+    this.setState({
+      numContactAddress:newNumContactAddress,
+      contactAddress: newContactAddress,
+    });
+  },
   handleEmailClearBtn: function(i){
     var newNumEmailAddress = this.state.numEmailAddress;
     newNumEmailAddress.pop();
@@ -239,8 +301,30 @@ var MyAwesomeReactComponent = React.createClass({
     });
   },
   handleFormSubmit:function(){
-    console.log(js2xmlparser.parse("contactInformation", this.state));
-    fs.appendFile(dataLocation, js2xmlparser.parse("contactInformation", this.state), 'utf8', function(err) {
+    var toSaveState = this.state;
+    delete toSaveState.value;
+    delete toSaveState.numVoiceTelephones;
+    delete toSaveState.numTddTtyTelephones;
+    delete toSaveState.numFacTelephones;
+    delete toSaveState.numEmailAddress;
+    delete toSaveState.numContactAddress;
+    if(toSaveState.hoursOfService == ''){
+      delete toSaveState.hoursOfService;
+    }
+    if(toSaveState.contactInstructions  == ''){
+      delete toSaveState.contactInstructions;
+    }
+    if((this.state.value == 1) && (toSaveState.personOrganization.contactOrganization == '')){
+      delete toSaveState.personOrganization.contactOrganization;
+    }
+    if((this.state.value == 2) && (toSaveState.personOrganization.contactPerson == '')){
+      delete toSaveState.personOrganization.contactPerson;
+    }
+    if(this.state.contactPosition == ''){
+      delete toSaveState.contactPosition;
+    }
+    console.log(js2xmlparser.parse("contactInformation", toSaveState));
+    fs.appendFile(dataLocation, js2xmlparser.parse("contactInformation", toSaveState), 'utf8', function(err) {
       if (err) {
         console.log(err);
       }
@@ -255,12 +339,13 @@ var MyAwesomeReactComponent = React.createClass({
       hoursOfService:'',
       contactInstructions:'',
       contactPosition:'',
-      contactAddress:{addressType:'', address:'', city:'', stateOrProvince:'', postalCode:'', country:''},
+      contactAddress:[{addressType:'', address:'', city:'', stateOrProvince:'', postalCode:'', country:''}],
       personOrganization:{contactPerson:'', contactOrganization:''},
       numVoiceTelephones:[1],
       numTddTtyTelephones:[1],
       numFacTelephones:[1],
       numEmailAddress:[1],
+      numContactAddress: [1],
     });
   },
 
@@ -274,12 +359,13 @@ var MyAwesomeReactComponent = React.createClass({
       hoursOfService:'',
       contactInstructions:'',
       contactPosition:'',
-      contactAddress:{addressType:'', address:'', city:'', stateOrProvince:'', postalCode:'', country:''},
+      contactAddress:[{addressType:'', address:'', city:'', stateOrProvince:'', postalCode:'', country:''}],
       personOrganization:{contactPerson:'', contactOrganization:''},
       numVoiceTelephones: [1],
       numTddTtyTelephones:[1],
       numFacTelephones:[1],
       numEmailAddress:[1],
+      numContactAddress:[1],
     });
   },
 
@@ -287,9 +373,9 @@ var MyAwesomeReactComponent = React.createClass({
     this.setState({value, personOrganization:{contactPerson:'', contactOrganization:''}});
   },
 
-  handleContactAddress: function(data, title){
+  handleContactAddress: function(data, title, i){
     newAddress = this.state.contactAddress;
-    newAddress[title] = data;
+    newAddress[i-1][title] = data;
     this.setState({contactAddress: newAddress});
     //console.log(contactAddressState.addressType);
     //this.setState({test: contactAddressState.addressType});
@@ -478,6 +564,38 @@ var MyAwesomeReactComponent = React.createClass({
     }
   },
 
+  getAddressComponent:function(number, length){
+    if(number == length){
+      var cont = this.state.contactAddress[number-1];
+      return(
+        <div className = "row" key = {number}>
+          <div className = "col-md-9" style = {styles.colMd9Style}>
+            <ContactAddress num = {number} content = {cont} handleContactAddress = {this.handleContactAddress}/>
+          </div>
+          <div className = "col-md-1" style = {styles.colMd1StyleAddress}>
+            <IconButton key = {number} onClick={() => this.handleContactAddressAddBtn(number)} tooltip="Add Address" iconStyle = {styles.iconColor} touch={true} tooltipPosition="bottom-right">
+              <Add />
+            </IconButton>
+          </div>
+        </div>
+      );
+    }else{
+      var cont = this.state.contactAddress[number-1];
+      return(
+        <div className = "row" key = {number}>
+          <div className = "col-md-9" style = {styles.colMd9Style}>
+            <ContactAddress num = {number} content = {cont} handleContactAddress = {this.handleContactAddress}/>
+          </div>
+          <div className = "col-md-1" style = {styles.colMd1StyleAddress}>
+            <IconButton key = {number} onClick={() => this.handleContactAddressClearBtn(number)} tooltip="Clear" iconStyle = {styles.iconColor} touch={true} tooltipPosition="bottom-right">
+              <Clear />
+            </IconButton>
+          </div>
+        </div>
+      );
+    }
+  },
+
   getFacComponent:function(number, length){
     if(number == length){
       var cont = this.state.facContactNumber[number-1];
@@ -535,6 +653,10 @@ var MyAwesomeReactComponent = React.createClass({
       this.getEmailAddressComponent(number, this.state.numEmailAddress.length)
     );
 
+    let contactAddressComponents = this.state.numContactAddress.map((number)=>
+      this.getAddressComponent(number, this.state.numContactAddress.length)
+    );
+
     return(
       <div>
         <AppBar
@@ -542,7 +664,7 @@ var MyAwesomeReactComponent = React.createClass({
           showMenuIconButton={false}/>
           <div className = "container card-1" style = {styles.containerStyle}>
           <div className = "row">
-            <div className = "col-md-2" />
+            <div className = "col-md-1" style = {styles.associationStyle} />
             <div className = "col-md-4">
               <SelectField
                 style = {styles.selectFieldStyle}
@@ -558,7 +680,7 @@ var MyAwesomeReactComponent = React.createClass({
           {personOrganization}
 
           <div className = "row">
-            <div className = "col-md-2"/>
+            <div className = "col-md-1" style={styles.associationStyle}/>
             <div className = "col-md-4">
               <TextField
                 style = {styles.selectFieldStyle}
@@ -571,11 +693,13 @@ var MyAwesomeReactComponent = React.createClass({
             <div className = "col-md-6"/>
           </div>
 
+          {/*
           <ContactAddress content = {this.state.contactAddress} handleContactAddress = {this.handleContactAddress}/>
-
+          */}
+          {contactAddressComponents}
           <div className = "row">
-            <div className = "col-md-1"/>
-            <div className = "col-md-4">
+            <div className = "col-md-1" style = {styles.contactInfoMd1Style}/>
+            <div className = "col-md-4" style = {styles.contactInformationTitle}>
               <Subheader style = {styles.subHeaderStyle}>Contact Information</Subheader>
             </div>
 
@@ -606,20 +730,20 @@ var MyAwesomeReactComponent = React.createClass({
               <ContactNumber  content = {this.state.emailAddress} handleContactNumber={this.handleEmailAddress}  hintText = "contact_information@gmail.com" contactType="Email Address"/>
             </div>
             */}
-            <div className = "col-md-6">
+            <div className = "col-md-6" style = {styles.hoursOfServiceStyle}>
               <ContactNumber  content = {this.state.hoursOfService} handleContactNumber={this.handleHoursOfService} hintText = "10:00 AM - 9:00 PM" contactType="Hours Of Service"/>
             </div>
-            <div className = "col-md-6">
+            <div className = "col-md-6" style = {styles.contactInstructionsStyle}>
               <ContactNumber  content = {this.state.contactInstructions} handleContactNumber={this.handleContactInstructions} hintText = "Early morning" contactType="Contact Instructions"/>
             </div>
           </div>
           <div className = "row" >
-            <div className = "col-md-2"/>
+            <div className = "col-md-1" style = {styles.saveClearBtnsStyle}/>
             <div className = "col-md-1">
-              <RaisedButton label="Save" style={styles.saveBtnStyle} onClick={this.handleFormSubmit}/>
+              <RaisedButton label="Save" primary = {true} style={styles.saveBtnStyle} onClick={this.handleFormSubmit}/>
             </div>
             <div className = "col-md-1">
-              <RaisedButton label="Clear" primary={true} style={styles.clearBtnStyle} onClick = {this.handleClearBtn} />
+              <RaisedButton label="Clear" secondary={true} style={styles.clearBtnStyle} onClick = {this.handleClearBtn} />
             </div>
           </div>
           </div>
