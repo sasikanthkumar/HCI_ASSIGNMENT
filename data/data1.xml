@@ -91,4 +91,38 @@
         <contactPerson></contactPerson>
         <contactOrganization></contactOrganization>
     </personOrganization>
+</contactInformation><?xml version='1.0'?>
+<contactInformation>
+    <voiceContactNumber></voiceContactNumber>
+    <tddTtyContactNumber></tddTtyContactNumber>
+    <facContactNumber></facContactNumber>
+    <emailAddress></emailAddress>
+    <contactAddress>
+        <addressType>physical</addressType>
+        <address>physical</address>
+        <city></city>
+        <stateOrProvince></stateOrProvince>
+        <postalCode></postalCode>
+        <country></country>
+    </contactAddress>
+    <contactAddress>
+        <addressType>physical and mailing</addressType>
+        <address>physical and mailing</address>
+        <city></city>
+        <stateOrProvince></stateOrProvince>
+        <postalCode></postalCode>
+        <country></country>
+    </contactAddress>
+    <contactAddress>
+        <addressType>mailing</addressType>
+        <address>mailing</address>
+        <city></city>
+        <stateOrProvince></stateOrProvince>
+        <postalCode></postalCode>
+        <country></country>
+    </contactAddress>
+    <personOrganization>
+        <contactPerson></contactPerson>
+        <contactOrganization></contactOrganization>
+    </personOrganization>
 </contactInformation>

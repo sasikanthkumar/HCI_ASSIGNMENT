@@ -80,6 +80,12 @@ const styles = {
     backgroundColor:'#fff',
 
   },
+
+  radioBtnLabelStyle:{
+    color:'rgba(0, 0, 0, 0.541176)',
+    fill:'rgba(0, 0, 0, 0.541176)',
+  },
+  
   contactInfoMd1Style:{
     marginLeft:'37px',
   },
@@ -124,7 +130,7 @@ var MyAwesomeReactComponent = React.createClass({
       hoursOfService:'',
       contactInstructions:'',
       contactPosition:'',
-      contactAddress:[{addressType:'', address:'', city:'', stateOrProvince:'', postalCode:'', country:''}],
+      contactAddress:[{addressType:'mailing', address:'', city:'', stateOrProvince:'', postalCode:'', country:''}],
       personOrganization:{contactPerson:'', contactOrganization:''},
       numVoiceTelephones:[1],
       numTddTtyTelephones:[1],
@@ -195,7 +201,7 @@ var MyAwesomeReactComponent = React.createClass({
     //newNumVoiceTelephones = newNumVoiceTelephones+1;
 
     var newContactAddress = this.state.contactAddress;
-    newContactAddress.push({addressType:'', address:'', city:'', stateOrProvince:'', postalCode:'', country:''});
+    newContactAddress.push({addressType:'mailing', address:'', city:'', stateOrProvince:'', postalCode:'', country:''});
     console.log(this.state.contactAddress);
     console.log(newContactAddress);
     this.setState({
@@ -346,7 +352,7 @@ var MyAwesomeReactComponent = React.createClass({
       hoursOfService:'',
       contactInstructions:'',
       contactPosition:'',
-      contactAddress:[{addressType:'', address:'', city:'', stateOrProvince:'', postalCode:'', country:''}],
+      contactAddress:[{addressType:'mailing', address:'', city:'', stateOrProvince:'', postalCode:'', country:''}],
       personOrganization:{contactPerson:'', contactOrganization:''},
       numVoiceTelephones:[1],
       numTddTtyTelephones:[1],
@@ -366,7 +372,7 @@ var MyAwesomeReactComponent = React.createClass({
       hoursOfService:'',
       contactInstructions:'',
       contactPosition:'',
-      contactAddress:[{addressType:'', address:'', city:'', stateOrProvince:'', postalCode:'', country:''}],
+      contactAddress:[{addressType:'mailing', address:'', city:'', stateOrProvince:'', postalCode:'', country:''}],
       personOrganization:{contactPerson:'', contactOrganization:''},
       numVoiceTelephones: [1],
       numTddTtyTelephones:[1],
@@ -699,11 +705,15 @@ var MyAwesomeReactComponent = React.createClass({
                   >
                 <RadioButton
                   value={1}
+                  labelStyle = {styles.radioBtnLabelStyle}
+                  iconStyle = {styles.radioBtnLabelStyle}
                   label="Person"
                 />
                 <RadioButton
                   value={2}
                   label="Organization"
+                  labelStyle = {styles.radioBtnLabelStyle}
+                  iconStyle = {styles.radioBtnLabelStyle}
                 />
                 </RadioButtonGroup>
             </div>
