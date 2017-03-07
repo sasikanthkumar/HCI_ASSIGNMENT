@@ -103,6 +103,13 @@ const styles = {
   contactInformationTitle:{
     marginLeft:'-5px',
   },
+  titleStyle:{
+    textAlign:'left',
+    marginLeft:'32px',
+  },
+  subHeaderStyle:{
+    marginLeft: '-16px',
+  },
 };
 
 var MyAwesomeReactComponent = React.createClass({
@@ -369,7 +376,8 @@ var MyAwesomeReactComponent = React.createClass({
     });
   },
 
-  handleChange: function(event, index, value) {
+  handleChange: function(event, value) {
+    console.log(value);
     this.setState({value, personOrganization:{contactPerson:'', contactOrganization:''}});
   },
 
@@ -664,8 +672,15 @@ var MyAwesomeReactComponent = React.createClass({
           showMenuIconButton={false}/>
           <div className = "container card-1" style = {styles.containerStyle}>
           <div className = "row">
+            <div className = "col-md-1" />
+            <div className = "col-md-4" style = {styles.titleStyle}>
+              <Subheader style = {styles.subHeaderStyle}>Association</Subheader></div>
+            <div className = "col-md-2" />
+          </div>
+          <div className = "row">
             <div className = "col-md-1" style = {styles.associationStyle} />
             <div className = "col-md-4">
+              {/*
               <SelectField
                 style = {styles.selectFieldStyle}
                 floatingLabelText="Association"
@@ -674,6 +689,23 @@ var MyAwesomeReactComponent = React.createClass({
                   <MenuItem value={1} primaryText="Person" />
                   <MenuItem value={2} primaryText="Organization" />
               </SelectField>
+              */}
+
+              <RadioButtonGroup
+                  name="associationRadioGroup"
+                  defaultSelected={1}
+                  style = {styles.selectFieldStyle}
+                  onChange={this.handleChange}
+                  >
+                <RadioButton
+                  value={1}
+                  label="Person"
+                />
+                <RadioButton
+                  value={2}
+                  label="Organization"
+                />
+                </RadioButtonGroup>
             </div>
             <div className = "col-md-6" />
           </div>

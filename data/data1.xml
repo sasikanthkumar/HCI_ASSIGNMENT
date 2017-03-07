@@ -73,4 +73,22 @@
         <contactPerson></contactPerson>
         <contactOrganization></contactOrganization>
     </personOrganization>
+</contactInformation><?xml version='1.0'?>
+<contactInformation>
+    <voiceContactNumber></voiceContactNumber>
+    <tddTtyContactNumber></tddTtyContactNumber>
+    <facContactNumber></facContactNumber>
+    <emailAddress></emailAddress>
+    <contactAddress>
+        <addressType></addressType>
+        <address></address>
+        <city></city>
+        <stateOrProvince></stateOrProvince>
+        <postalCode></postalCode>
+        <country></country>
+    </contactAddress>
+    <personOrganization>
+        <contactPerson></contactPerson>
+        <contactOrganization></contactOrganization>
+    </personOrganization>
 </contactInformation>
