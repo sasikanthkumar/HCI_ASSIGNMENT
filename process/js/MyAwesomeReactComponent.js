@@ -17,6 +17,9 @@ var ContactNumber = require('./ContactNumber');
 var Subheader  = require('../../node_modules/material-ui/Subheader').default;
 var fs = eRequire('fs');
 var myState = {contactPosition:'',personOrganizationComponent:{},contactInstructions:'',contactAddress: {},voiceContactNum:{}, tddTtyContactNum:{}, facContactNum:{}, emailAddress:{}, hoursOfService:{}};
+var Tabs = require ('../../node_modules/material-ui/Tabs/Tabs').default;
+
+var Tab =  require( '../../node_modules/material-ui/Tabs/Tab').default;
 
 const styles = {
   block: {
@@ -85,7 +88,7 @@ const styles = {
     color:'rgba(0, 0, 0, 0.541176)',
     fill:'rgba(0, 0, 0, 0.541176)',
   },
-  
+
   contactInfoMd1Style:{
     marginLeft:'37px',
   },
@@ -582,6 +585,7 @@ var MyAwesomeReactComponent = React.createClass({
     if(number == length){
       var cont = this.state.contactAddress[number-1];
       return(
+        <Tab label = {"Address - "+number}>
         <div className = "row" key = {number}>
           <div className = "col-md-9" style = {styles.colMd9Style}>
             <ContactAddress num = {number} content = {cont} handleContactAddress = {this.handleContactAddress}/>
@@ -592,10 +596,12 @@ var MyAwesomeReactComponent = React.createClass({
             </IconButton>
           </div>
         </div>
+        </Tab>
       );
     }else{
       var cont = this.state.contactAddress[number-1];
       return(
+        <Tab label = {"Address - "+number}>
         <div className = "row" key = {number}>
           <div className = "col-md-9" style = {styles.colMd9Style}>
             <ContactAddress num = {number} content = {cont} handleContactAddress = {this.handleContactAddress}/>
@@ -606,6 +612,7 @@ var MyAwesomeReactComponent = React.createClass({
             </IconButton>
           </div>
         </div>
+        </Tab>
       );
     }
   },
@@ -738,7 +745,10 @@ var MyAwesomeReactComponent = React.createClass({
           {/*
           <ContactAddress content = {this.state.contactAddress} handleContactAddress = {this.handleContactAddress}/>
           */}
+          <Tabs>
           {contactAddressComponents}
+          </Tabs>
+          
           <div className = "row">
             <div className = "col-md-1" style = {styles.contactInfoMd1Style}/>
             <div className = "col-md-4" style = {styles.contactInformationTitle}>
