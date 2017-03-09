@@ -14,12 +14,14 @@ var PersonComponent = require('./PersonComponent');
 var OrganizationComponent = require('./OrganizationComponent');
 var ContactAddress = require('./ContactAddress');
 var ContactNumber = require('./ContactNumber');
+var MyTabs = require('./MyTabs');
 var Subheader  = require('../../node_modules/material-ui/Subheader').default;
 var fs = eRequire('fs');
 var myState = {contactPosition:'',personOrganizationComponent:{},contactInstructions:'',contactAddress: {},voiceContactNum:{}, tddTtyContactNum:{}, facContactNum:{}, emailAddress:{}, hoursOfService:{}};
 var Tabs = require ('../../node_modules/material-ui/Tabs/Tabs').default;
-
 var Tab =  require( '../../node_modules/material-ui/Tabs/Tab').default;
+var TimePicker  =  require('../../node_modules/material-ui/TimePicker').default;
+var Toggle  =  require('../../node_modules/material-ui/Toggle').default;
 
 const styles = {
   block: {
@@ -32,6 +34,24 @@ const styles = {
   },
   saveClearBtnsStyle:{
     marginLeft:'34px',
+  },
+  divLeftGap:{
+    top:'12px',
+  },
+  toogleLabelStyle:{
+    left: '40px',
+  },
+  div1LeftGap:{
+    left: '250px',
+  },
+  addressTypeHeadingStyle:{
+    fontSize:"12px",
+    textAlign:"left",
+    fontWeight:'700',
+    color:'rgba(0, 0, 0, 0.298039)',
+    lineHeight:'22px',
+    marginLeft: '104px',
+    marginBottom: '-4px',
   },
   clearBtnStyle:{
     marginTop:'16px',
@@ -71,6 +91,7 @@ const styles = {
   },
   textAlignCenterStyle:{
     textAlign:'center',
+    marginLeft: '-30px',
   },
   contactInstructions:{
     width: '290px',
@@ -91,6 +112,10 @@ const styles = {
 
   contactInfoMd1Style:{
     marginLeft:'37px',
+  },
+  timePickerStyle:{
+    width: '286px',
+    marginLeft: '90px',
   },
   colMd10Style:{
     textAlign:'right',
@@ -140,6 +165,50 @@ var MyAwesomeReactComponent = React.createClass({
       numFacTelephones:[1],
       numEmailAddress:[1],
       numContactAddress:[1],
+      numTabs:[1],
+      addressSelected:1,
+      timePickerDate:null,
+      language: 'English',
+      languageLabel: 'Change Language',
+      appBarTitle: 'Contact Information',
+      associationLabel: 'Association',
+      personLabel: 'Person',
+      organizationLabel: 'Organization',
+      contactOrganizationLabel: 'Contact Organization' ,
+      contactOrganizationHintLabel: 'xyz',
+      contactPersonLabel: 'Contact Person',
+      contactPersonHintLabel: 'abc',
+      contactPositionLabel: 'Contact Position',
+      contactPositionHintLabel: 'HR',
+      tabAddressLabel: 'Address',
+      addressTypeLabel: 'Address Type',
+      mailingLabel: 'mailing',
+      physicalLabel: 'physical',
+      physicalAndMailingLabel: 'physical and mailing',
+      addLabel: 'Add',
+      addHintLabel: 'B-337 BITS Pilani Hyderabad Campus',
+      cityLabel:'City',
+      cityHintLabel: 'Hyderabad',
+      stateOrProvinceLabel: 'State or Province',
+      stateOrProvinceHintLabel: 'Telangana',
+      postalCodeLabel: 'Postal Code',
+      postalCodeHintLabel: '500078',
+      countryLabel: 'Country',
+      countryHintLabel: 'India',
+      contactInformationLabel: 'Contact Information',
+      voiceTelephoneLabel: 'Voice Telephone',
+      voiceTelephoneHintLabel: '1234567890',
+      tddTtyContactNumLabel: 'TDD/TTY Telephone',
+      tddTtyContactNumHintLabel: '1234567890',
+      facTelephoneLabel: 'Fac Telephone',
+      facTelephoneHintLabel: '1234567890',
+      emailAddressLabel: 'Email Address',
+      emailAddressHintLabel: 'info@gmail.com',
+      hoursOfServiceLabel: 'Hours Of Service',
+      contactInstructionsLabel: 'Contact Instructions',
+      contactInstructionsHintLabel: 'Early Morning',
+      saveBtnLabel: 'SAVE',
+      clearBtnLabel: 'CLEAR',
     }
   },
 
@@ -210,6 +279,60 @@ var MyAwesomeReactComponent = React.createClass({
     this.setState({
       numContactAddress: newNumContactAddress,
       contactAddress: newContactAddress,
+    });
+  },
+  handleTabsAddBtnTest: function(){
+    var newNumTabs = this.state.numTabs;
+    var i = newNumTabs.length;
+    newNumTabs.push(i+1);
+
+    var newContactAddress = this.state.contactAddress;
+    newContactAddress.push({addressType:'mailing', address:'', city:'', stateOrProvince:'', postalCode:'', country:''});
+
+    this.setState({
+      numTabs: newNumTabs,
+      contactAddress: newContactAddress,
+      addressSelected: i+1,
+    });
+  },
+
+  handleTabOnClick: function(tabNumber){
+    console.log("tabNumber = ");
+    console.log(tabNumber);
+    this.setState({
+      addressSelected:tabNumber,
+    });
+  },
+  handleTabClearOnClick: function(tabNumber){
+    console.log("clearing tabNumber = ");
+    console.log(tabNumber);
+
+    var newNumTabs = this.state.numTabs;
+    newNumTabs.pop();
+
+    var newContactAddress = this.state.contactAddress;
+    newContactAddress.splice(tabNumber-1,1);
+
+    var newAddressSelected = this.state.addressSelected;
+    if((tabNumber == 1) && (this.state.addressSelected == 1)){
+      newAddressSelected = 1;
+    }else if (tabNumber == 1) {
+      newAddressSelected = this.state.addressSelected-1;
+    }else if ((tabNumber >1) && (this.state.addressSelected == tabNumber)) {
+      newAddressSelected = this.state.addressSelected-1;
+    }else if ((tabNumber >1) && (this.state.addressSelected > tabNumber)) {
+      newAddressSelected = this.state.addressSelected-1;
+    }else if ((tabNumber >1)&& (this.state.addressSelected < tabNumber)) {
+      newAddressSelected = this.state.addressSelected;
+    }
+
+    //console.log(evt);
+    //var newNumVoiceTelephones = this.state.numVoiceTelephones;
+    //newNumVoiceTelephones = newNumVoiceTelephones-1;
+    this.setState({
+      numTabs:newNumTabs,
+      contactAddress: newContactAddress,
+      addressSelected:newAddressSelected,
     });
   },
   handleVoiceAddBtn: function(i){
@@ -362,6 +485,50 @@ var MyAwesomeReactComponent = React.createClass({
       numFacTelephones:[1],
       numEmailAddress:[1],
       numContactAddress: [1],
+      numTabs:[1],
+      addressSelected:1,
+      timePickerDate: null,
+      language: 'English',
+      languageLabel: 'Change Language',
+      appBarTitle: 'Contact Information',
+      associationLabel: 'Association',
+      personLabel: 'Person',
+      organizationLabel: 'Organization',
+      contactOrganizationLabel: 'Contact Organization' ,
+      contactOrganizationHintLabel: 'xyz',
+      contactPersonLabel: 'Contact Person',
+      contactPersonHintLabel: 'abc',
+      contactPositionLabel: 'Contact Position',
+      contactPositionHintLabel: 'HR',
+      tabAddressLabel: 'Address',
+      addressTypeLabel: 'Address Type',
+      mailingLabel: 'mailing',
+      physicalLabel: 'physical',
+      physicalAndMailingLabel: 'physical and mailing',
+      addLabel: 'Add',
+      addHintLabel: 'B-337 BITS Pilani Hyderabad Campus',
+      cityLabel:'City',
+      cityHintLabel: 'Hyderabad',
+      stateOrProvinceLabel: 'State or Province',
+      stateOrProvinceHintLabel: 'Telangana',
+      postalCodeLabel: 'Postal Code',
+      postalCodeHintLabel: '500078',
+      countryLabel: 'Country',
+      countryHintLabel: 'India',
+      contactInformationLabel: 'Contact Information',
+      voiceTelephoneLabel: 'Voice Telephone',
+      voiceTelephoneHintLabel: '1234567890',
+      tddTtyContactNumLabel: 'TDD/TTY Telephone',
+      tddTtyContactNumHintLabel: '1234567890',
+      facTelephoneLabel: 'Fac Telephone',
+      facTelephoneHintLabel: '1234567890',
+      emailAddressLabel: 'Email Address',
+      emailAddressHintLabel: 'info@gmail.com',
+      hoursOfServiceLabel: 'Hours Of Service',
+      contactInstructionsLabel: 'Contact Instructions',
+      contactInstructionsHintLabel: 'Early Morning',
+      saveBtnLabel: 'SAVE',
+      clearBtnLabel: 'CLEAR',
     });
   },
 
@@ -382,6 +549,50 @@ var MyAwesomeReactComponent = React.createClass({
       numFacTelephones:[1],
       numEmailAddress:[1],
       numContactAddress:[1],
+      numTabs:[1],
+      addressSelected:1,
+      timePickerDate: null,
+      language: 'English',
+      languageLabel: 'Change Language',
+      appBarTitle: 'Contact Information',
+      associationLabel: 'Association',
+      personLabel: 'Person',
+      organizationLabel: 'Organization',
+      contactOrganizationLabel: 'Contact Organization' ,
+      contactOrganizationHintLabel: 'xyz',
+      contactPersonLabel: 'Contact Person',
+      contactPersonHintLabel: 'abc',
+      contactPositionLabel: 'Contact Position',
+      contactPositionHintLabel: 'HR',
+      tabAddressLabel: 'Address',
+      addressTypeLabel: 'Address Type',
+      mailingLabel: 'mailing',
+      physicalLabel: 'physical',
+      physicalAndMailingLabel: 'physical and mailing',
+      addLabel: 'Add',
+      addHintLabel: 'B-337 BITS Pilani Hyderabad Campus',
+      cityLabel:'City',
+      cityHintLabel: 'Hyderabad',
+      stateOrProvinceLabel: 'State or Province',
+      stateOrProvinceHintLabel: 'Telangana',
+      postalCodeLabel: 'Postal Code',
+      postalCodeHintLabel: '500078',
+      countryLabel: 'Country',
+      countryHintLabel: 'India',
+      contactInformationLabel: 'Contact Information',
+      voiceTelephoneLabel: 'Voice Telephone',
+      voiceTelephoneHintLabel: '1234567890',
+      tddTtyContactNumLabel: 'TDD/TTY Telephone',
+      tddTtyContactNumHintLabel: '1234567890',
+      facTelephoneLabel: 'Fac Telephone',
+      facTelephoneHintLabel: '1234567890',
+      emailAddressLabel: 'Email Address',
+      emailAddressHintLabel: 'info@gmail.com',
+      hoursOfServiceLabel: 'Hours Of Service',
+      contactInstructionsLabel: 'Contact Instructions',
+      contactInstructionsHintLabel: 'Early Morning',
+      saveBtnLabel: 'SAVE',
+      clearBtnLabel: 'CLEAR',
     });
   },
 
@@ -457,6 +668,109 @@ var MyAwesomeReactComponent = React.createClass({
     //console.log("myState");
     //console.log(myState);
   },
+  handleLanguageToogle:function(e, isInputChecked){
+    if (isInputChecked) {
+      this.setState({
+        language: 'हिंदी',
+        languageLabel: 'चेंज लैंग्वेज',
+        appBarTitle: 'कांटेक्ट इनफार्मेशन',
+        associationLabel: 'एसोसिएशन',
+        personLabel: 'पर्सन',
+        organizationLabel: 'आर्गेनाइजेशन',
+        contactOrganizationLabel: 'कांटेक्ट आर्गेनाइजेशन',
+         contactOrganizationHintLabel: 'क्सिज़',
+        contactPersonLabel: 'कांटेक्ट पर्सन',
+        contactPersonHintLabel: 'अबकि',
+        contactPositionLabel: 'कांटेक्ट पोजीशन',
+        contactPositionHintLabel: 'हर',
+        tabAddressLabel: 'एड्रेस',
+        addressTypeLabel: 'एड्रेस टाइप',
+        mailingLabel: 'मेलिंग',
+        physicalLabel: 'फिजिकल',
+        physicalAndMailingLabel: 'फिजिकल एंड मेलिंग',
+        addLabel: 'ऐड',
+        addHintLabel: 'बी-337 बिट्स पिलानी हैदराबाद कैंपस',
+        cityLabel:'सिटी',
+        cityHintLabel: 'हैदराबाद',
+        stateOrProvinceLabel: 'स्टेट और प्रोविंस',
+        stateOrProvinceHintLabel: 'तेलंगाना',
+        postalCodeLabel: 'पोस्टल कोड',
+        postalCodeHintLabel: '500078',
+        countryLabel: 'कंट्री',
+        countryHintLabel: 'इंडिया',
+        contactInformationLabel: 'कांटेक्ट इनफार्मेशन',
+        voiceTelephoneLabel: 'वौइस् टेलीफोन',
+        voiceTelephoneHintLabel: '1234567890',
+        tddTtyContactNumLabel: 'तड़ड़/टी  टेलीफोन',
+        tddTtyContactNumHintLabel: '1234567890',
+        facTelephoneLabel: 'फाच टेलीफोन',
+        facTelephoneHintLabel: '1234567890',
+        emailAddressLabel: 'ईमेल एड्रेस',
+        emailAddressHintLabel: 'info@gmail.com',
+        hoursOfServiceLabel: 'हॉर्स ऑफ़ सर्विस',
+        contactInstructionsLabel: 'कांटेक्ट इंस्ट्रुक्शन्स',
+        contactInstructionsHintLabel: 'अर्ली मॉर्निंग',
+        saveBtnLabel: 'सेव',
+        clearBtnLabel: 'क्लियर',
+      });
+    }else {
+      this.setState({
+        language: 'English',
+        languageLabel: 'Change Language',
+        appBarTitle: 'Contact Information',
+        associationLabel: 'Association',
+        personLabel: 'Person',
+        organizationLabel: 'Organization',
+        contactOrganizationLabel: 'Contact Organization' ,
+        contactOrganizationHintLabel: 'xyz',
+        contactPersonLabel: 'Contact Person',
+        contactPersonHintLabel: 'abc',
+        contactPositionLabel: 'Contact Position',
+        contactPositionHintLabel: 'HR',
+        tabAddressLabel: 'Address',
+        addressTypeLabel: 'Address Type',
+        mailingLabel: 'mailing',
+        physicalLabel: 'physical',
+        physicalAndMailingLabel: 'physical and mailing',
+        addLabel: 'Add',
+        addHintLabel: 'B-337 BITS Pilani Hyderabad Campus',
+        cityLabel:'City',
+        cityHintLabel: 'Hyderabad',
+        stateOrProvinceLabel: 'State or Province',
+        stateOrProvinceHintLabel: 'Telangana',
+        postalCodeLabel: 'Postal Code',
+        postalCodeHintLabel: '500078',
+        countryLabel: 'Country',
+        countryHintLabel: 'India',
+        contactInformationLabel: 'Contact Information',
+        voiceTelephoneLabel: 'Voice Telephone',
+        voiceTelephoneHintLabel: '1234567890',
+        tddTtyContactNumLabel: 'TDD/TTY Telephone',
+        tddTtyContactNumHintLabel: '1234567890',
+        facTelephoneLabel: 'Fac Telephone',
+        facTelephoneHintLabel: '1234567890',
+        emailAddressLabel: 'Email Address',
+        emailAddressHintLabel: 'info@gmail.com',
+        hoursOfServiceLabel: 'Hours Of Service',
+        contactInstructionsLabel: 'Contact Instructions',
+        contactInstructionsHintLabel: 'Early Morning',
+        saveBtnLabel: 'SAVE',
+        clearBtnLabel: 'CLEAR',
+      });
+    }
+  },
+  handleChangeTimePicker12: function(e, date){
+    console.log(date);
+    var hours = date.getHours();
+    var minutes = date.getMinutes();
+    var ampm = hours >= 12 ? 'pm' : 'am';
+    hours = hours % 12;
+    hours = hours ? hours : 12; // the hour '0' should be '12'
+    minutes = minutes < 10 ? '0'+minutes : minutes;
+    var strTime = hours + ':' + minutes + ' ' + ampm;
+    console.log(strTime);
+    this.setState({hoursOfService: strTime, timePickerDate: date});
+  },
   handleContactInstructions: function(e){
     this.setState({contactInstructions: e.target.value});
     //myState.contactInstructions = e.target.value;
@@ -491,7 +805,7 @@ var MyAwesomeReactComponent = React.createClass({
       return (<div className = "col-md-6" key = {number}>
         <div className = "row">
           <div className = "col-md-10" style = {styles.colMd10Style}>
-            <ContactNumber  num = {number} content = {cont} handleContactNumber={this.handleVoiceContactNum.bind(this, number)} hintText = "1234567890" contactType="Voice Telephone"/>
+            <ContactNumber  num = {number} content = {cont} handleContactNumber={this.handleVoiceContactNum.bind(this, number)} hintText = {this.state.voiceTelephoneHintLabel} contactType={this.state.voiceTelephoneLabel}/>
           </div>
           <div className = "col-md-1" style = {styles.colMd1Style}>
             <IconButton key = {number}  onClick={() => this.handleVoiceAddBtn(number)} tooltip="Add Voice Contact Number" iconStyle = {styles.iconColor} touch={true} tooltipPosition="bottom-right">
@@ -505,7 +819,7 @@ var MyAwesomeReactComponent = React.createClass({
       return (<div className = "col-md-6" key = {number}>
         <div className = "row">
           <div className = "col-md-10" style = {styles.colMd10Style}>
-            <ContactNumber num = {number} content = {cont} handleContactNumber={this.handleVoiceContactNum.bind(this, number)} hintText = "1234567890" contactType="Voice Telephone"/>
+            <ContactNumber num = {number} content = {cont} handleContactNumber={this.handleVoiceContactNum.bind(this, number)} hintText = {this.state.voiceTelephoneHintLabel} contactType={this.state.voiceTelephoneLabel}/>
           </div>
           <div className = "col-md-1" style = {styles.colMd1Style}>
             <IconButton key = {number} onClick={() => this.handleVoiceClearBtn(number)}  tooltip="Clear" iconStyle = {styles.iconColor} touch={true} tooltipPosition="bottom-right">
@@ -523,7 +837,7 @@ var MyAwesomeReactComponent = React.createClass({
       return (<div className = "col-md-6" key = {number}>
         <div className = "row">
           <div className = "col-md-10" style = {styles.colMd10Style}>
-            <ContactNumber  num = {number} content = {cont} handleContactNumber={this.handleTddTtyContactNum.bind(this, number)} hintText = "1234567890" contactType="TDD/TTY Telephone"/>
+            <ContactNumber  num = {number} content = {cont} handleContactNumber={this.handleTddTtyContactNum.bind(this, number)} hintText = {this.state.tddTtyContactNumHintLabel} contactType={this.state.tddTtyContactNumLabel}/>
           </div>
           <div className = "col-md-1" style = {styles.colMd1Style}>
             <IconButton key = {number}  onClick={() => this.handleTddTtyAddBtn(number)} tooltip="Add Tdd/Tty Contact Number" iconStyle = {styles.iconColor} touch={true} tooltipPosition="bottom-right">
@@ -537,7 +851,7 @@ var MyAwesomeReactComponent = React.createClass({
       return (<div className = "col-md-6" key = {number}>
         <div className = "row">
           <div className = "col-md-10" style = {styles.colMd10Style}>
-            <ContactNumber num = {number} content = {cont} handleContactNumber={this.handleTddTtyContactNum.bind(this, number)} hintText = "1234567890" contactType="TDD/TTY Telephone"/>
+            <ContactNumber num = {number} content = {cont} handleContactNumber={this.handleTddTtyContactNum.bind(this, number)}  hintText = {this.state.tddTtyContactNumHintLabel} contactType={this.state.tddTtyContactNumLabel}/>
           </div>
           <div className = "col-md-1" style = {styles.colMd1Style}>
             <IconButton key = {number} onClick={() => this.handleTddTtyClearBtn(number)}  tooltip="Clear" iconStyle = {styles.iconColor} touch={true} tooltipPosition="bottom-right">
@@ -555,7 +869,7 @@ var MyAwesomeReactComponent = React.createClass({
       return (<div className = "col-md-6" key = {number}>
         <div className = "row">
           <div className = "col-md-10" style = {styles.colMd10Style}>
-            <ContactNumber  num = {number} content = {cont} handleContactNumber={this.handleEmailAddress.bind(this, number)} hintText = "info@gmail.com" contactType="Email Address"/>
+            <ContactNumber  num = {number} content = {cont} handleContactNumber={this.handleEmailAddress.bind(this, number)}  hintText = {this.state.emailAddressHintLabel} contactType={this.state.emailAddressLabel}/>
           </div>
           <div className = "col-md-1" style = {styles.colMd1Style}>
             <IconButton key = {number}  onClick={() => this.handleEmailAddBtn(number)} tooltip="Add Email Address" iconStyle = {styles.iconColor} touch={true} tooltipPosition="bottom-right">
@@ -569,7 +883,7 @@ var MyAwesomeReactComponent = React.createClass({
       return (<div className = "col-md-6" key = {number}>
         <div className = "row">
           <div className = "col-md-10" style = {styles.colMd10Style}>
-            <ContactNumber num = {number} content = {cont} handleContactNumber={this.handleEmailAddress.bind(this, number)} hintText = "info@gmail.com" contactType="Email Address"/>
+            <ContactNumber num = {number} content = {cont} handleContactNumber={this.handleEmailAddress.bind(this, number)}  hintText = {this.state.emailAddressHintLabel} contactType={this.state.emailAddressLabel}/>
           </div>
           <div className = "col-md-1" style = {styles.colMd1Style}>
             <IconButton key = {number} onClick={() => this.handleEmailClearBtn(number)}  tooltip="Clear" iconStyle = {styles.iconColor} touch={true} tooltipPosition="bottom-right">
@@ -581,11 +895,42 @@ var MyAwesomeReactComponent = React.createClass({
     }
   },
 
+  getAddressComponentMyTabs: function(number){
+    var cont = this.state.contactAddress[number-1];
+    return(
+      <div className = "row" key = {number}>
+        <div className = "col-md-9" style = {styles.colMd9Style}>
+          <ContactAddress
+                  num = {number}
+                  content = {cont}
+                  handleContactAddress = {this.handleContactAddress}
+                  addressTypeLabel = {this.state.addressTypeLabel}
+                  mailingLabel = {this.state.mailingLabel}
+                  physicalLabel = {this.state.physicalLabel}
+                  physicalAndMailingLabel = {this.state.physicalAndMailingLabel}
+                  addLabel = {this.state.addLabel}
+                  addHintLabel = {this.state.addHintLabel}
+                  cityLabel = {this.state.cityLabel}
+                  cityHintLabel = {this.state.cityHintLabel}
+                  stateOrProvinceLabel = {this.state.stateOrProvinceLabel}
+                  stateOrProvinceHintLabel = {this.state.stateOrProvinceHintLabel}
+                  postalCodeLabel = {this.state.postalCodeLabel}
+                  postalCodeHintLabel = {this.state.postalCodeHintLabel}
+                  countryLabel = {this.state.countryLabel}
+                  countryHintLabel = {this.state.countryHintLabel}
+          />
+        </div>
+        <div className = "col-md-1" style = {styles.colMd1StyleAddress}>
+        </div>
+      </div>
+    );
+  },
+
   getAddressComponent:function(number, length){
     if(number == length){
       var cont = this.state.contactAddress[number-1];
       return(
-        <Tab label = {"Address - "+number}>
+        <Tab label = {"Address - "+number} key = {number}>
         <div className = "row" key = {number}>
           <div className = "col-md-9" style = {styles.colMd9Style}>
             <ContactAddress num = {number} content = {cont} handleContactAddress = {this.handleContactAddress}/>
@@ -601,7 +946,7 @@ var MyAwesomeReactComponent = React.createClass({
     }else{
       var cont = this.state.contactAddress[number-1];
       return(
-        <Tab label = {"Address - "+number}>
+        <Tab label = {"Address - "+number} key = {number}>
         <div className = "row" key = {number}>
           <div className = "col-md-9" style = {styles.colMd9Style}>
             <ContactAddress num = {number} content = {cont} handleContactAddress = {this.handleContactAddress}/>
@@ -623,7 +968,7 @@ var MyAwesomeReactComponent = React.createClass({
       return (<div className = "col-md-6" key = {number}>
         <div className = "row">
           <div className = "col-md-10" style = {styles.colMd10Style}>
-            <ContactNumber  num = {number} content = {cont} handleContactNumber={this.handleFacContactNum.bind(this, number)} hintText = "1234567890" contactType="Fac Telephone"/>
+            <ContactNumber  num = {number} content = {cont} handleContactNumber={this.handleFacContactNum.bind(this, number)} hintText = {this.state.facTelephoneHintLabel} contactType={this.state.facTelephoneLabel}/>
           </div>
           <div className = "col-md-1" style = {styles.colMd1Style}>
             <IconButton key = {number}  onClick={() => this.handleFacAddBtn(number)} tooltip="Add Fac Contact Number" iconStyle = {styles.iconColor} touch={true} tooltipPosition="bottom-right">
@@ -637,7 +982,7 @@ var MyAwesomeReactComponent = React.createClass({
       return (<div className = "col-md-6" key = {number}>
         <div className = "row">
           <div className = "col-md-10" style = {styles.colMd10Style}>
-            <ContactNumber num = {number} content = {cont} handleContactNumber={this.handleFacContactNum.bind(this, number)} hintText = "1234567890" contactType="Fac Telephone"/>
+            <ContactNumber num = {number} content = {cont} handleContactNumber={this.handleFacContactNum.bind(this, number)} hintText = {this.state.facTelephoneHintLabel} contactType={this.state.facTelephoneLabel}/>
           </div>
           <div className = "col-md-1" style = {styles.colMd1Style}>
             <IconButton key = {number} onClick={() => this.handleFacClearBtn(number)}  tooltip="Clear" iconStyle = {styles.iconColor} touch={true} tooltipPosition="bottom-right">
@@ -653,9 +998,9 @@ var MyAwesomeReactComponent = React.createClass({
 
     let personOrganization = null;
     if (this.state.value == 1) {
-      personOrganization = <PersonComponent content = {this.state.personOrganization} handlePersonOrganization = {this.handlePersonOrganizationComponent} />;
+      personOrganization = <PersonComponent       contactOrganizationLabel = {this.state.contactOrganizationLabel} contactOrganizationHintLabel = {this.state.contactOrganizationHintLabel} contactPersonLabel = {this.state.contactPersonLabel} contactPersonHintLabel = {this.state.contactPersonHintLabel} content = {this.state.personOrganization} handlePersonOrganization = {this.handlePersonOrganizationComponent} />;
     } else {
-      personOrganization = <OrganizationComponent content = {this.state.personOrganization} handlePersonOrganization = {this.handlePersonOrganizationComponent} />;
+      personOrganization = <OrganizationComponent contactOrganizationLabel = {this.state.contactOrganizationLabel} contactOrganizationHintLabel = {this.state.contactOrganizationHintLabel} contactPersonLabel = {this.state.contactPersonLabel} contactPersonHintLabel = {this.state.contactPersonHintLabel} content = {this.state.personOrganization} handlePersonOrganization = {this.handlePersonOrganizationComponent} />;
     }
 
     let voiceContactNumbers = this.state.numVoiceTelephones.map((number) =>
@@ -678,17 +1023,29 @@ var MyAwesomeReactComponent = React.createClass({
       this.getAddressComponent(number, this.state.numContactAddress.length)
     );
 
+    let contactAddressMyTabs = this.getAddressComponentMyTabs(this.state.addressSelected);
+
     return(
       <div>
         <AppBar
-          title="Contact Information"
+          title={this.state.appBarTitle}
           showMenuIconButton={false}/>
           <div className = "container card-1" style = {styles.containerStyle}>
+
           <div className = "row">
             <div className = "col-md-1" />
             <div className = "col-md-4" style = {styles.titleStyle}>
-              <Subheader style = {styles.subHeaderStyle}>Association</Subheader></div>
-            <div className = "col-md-2" />
+              <Subheader style = {styles.subHeaderStyle}>{this.state.associationLabel}</Subheader></div>
+            <div className = "col-md-4" style = {styles.div1LeftGap}>
+              <Subheader style = {styles.subHeaderStyle}>{this.state.languageLabel} :</Subheader>
+            </div>
+            <div className = "col-md-2" style = {styles.divLeftGap}>
+              <Toggle
+                label={this.state.language}
+                onToggle = {this.handleLanguageToogle}
+                labelStyle = {styles.toogleLabelStyle}
+              />
+            </div>
           </div>
           <div className = "row">
             <div className = "col-md-1" style = {styles.associationStyle} />
@@ -714,15 +1071,17 @@ var MyAwesomeReactComponent = React.createClass({
                   value={1}
                   labelStyle = {styles.radioBtnLabelStyle}
                   iconStyle = {styles.radioBtnLabelStyle}
-                  label="Person"
+                  label={this.state.personLabel}
                 />
+
                 <RadioButton
                   value={2}
-                  label="Organization"
+                  label={this.state.organizationLabel}
                   labelStyle = {styles.radioBtnLabelStyle}
                   iconStyle = {styles.radioBtnLabelStyle}
                 />
                 </RadioButtonGroup>
+
             </div>
             <div className = "col-md-6" />
           </div>
@@ -733,9 +1092,9 @@ var MyAwesomeReactComponent = React.createClass({
             <div className = "col-md-4">
               <TextField
                 style = {styles.selectFieldStyle}
-                hintText="HR"
+                hintText={this.state.contactPositionHintLabel}
                 value={this.state.contactPosition}
-                floatingLabelText="Contact Position"
+                floatingLabelText={this.state.contactPositionLabel}
                 onChange = {this.handleContactPosition}
                 floatingLabelFixed={true}/>
             </div>
@@ -745,26 +1104,26 @@ var MyAwesomeReactComponent = React.createClass({
           {/*
           <ContactAddress content = {this.state.contactAddress} handleContactAddress = {this.handleContactAddress}/>
           */}
+          {/*
           <Tabs>
           {contactAddressComponents}
           </Tabs>
-          
+          */}
+
+          <MyTabs tabAddressLabel = {this.state.tabAddressLabel} addressSelected = {this.state.addressSelected} numTabs = {this.state.numTabs} handleTabsAddBtn = {this.handleTabsAddBtnTest} handleTabOnClick = {this.handleTabOnClick} handleTabClearOnClick = {this.handleTabClearOnClick}/>
+          {contactAddressMyTabs}
           <div className = "row">
             <div className = "col-md-1" style = {styles.contactInfoMd1Style}/>
             <div className = "col-md-4" style = {styles.contactInformationTitle}>
-              <Subheader style = {styles.subHeaderStyle}>Contact Information</Subheader>
+              <Subheader style = {styles.subHeaderStyle}>{this.state.contactInformationLabel}</Subheader>
             </div>
 
           </div>
           <div className = "row" style = {styles.textAlignCenterStyle}>
-
-
             {voiceContactNumbers}
             {tddTtyContactNumbers}
             {facContactNumbers}
             {emailAddressComponent}
-
-
             {/*
             <div className = "col-md-6">
               <ContactNumber  content = {this.state.tddTtyContactNumber} handleContactNumber={this.handleTddTtyContactNum} hintText = "1234567890" contactType="TDD/TTY Telephone"/>
@@ -783,19 +1142,26 @@ var MyAwesomeReactComponent = React.createClass({
             </div>
             */}
             <div className = "col-md-6" style = {styles.hoursOfServiceStyle}>
+              {/*
               <ContactNumber  content = {this.state.hoursOfService} handleContactNumber={this.handleHoursOfService} hintText = "10:00 AM - 9:00 PM" contactType="Hours Of Service"/>
+              */}
+              <p style = {styles.addressTypeHeadingStyle}>{this.state.hoursOfServiceLabel}</p>
+              <TimePicker hintText={"10:00 AM"} style= {styles.timePickerStyle} onChange={this.handleChangeTimePicker12} value = {this.state.timePickerDate}/>
             </div>
             <div className = "col-md-6" style = {styles.contactInstructionsStyle}>
-              <ContactNumber  content = {this.state.contactInstructions} handleContactNumber={this.handleContactInstructions} hintText = "Early morning" contactType="Contact Instructions"/>
+              <ContactNumber  content = {this.state.contactInstructions} handleContactNumber={this.handleContactInstructions} hintText = {this.state.contactInstructionsHintLabel} contactType={this.state.contactInstructionsLabel}/>
             </div>
           </div>
           <div className = "row" >
             <div className = "col-md-1" style = {styles.saveClearBtnsStyle}/>
             <div className = "col-md-1">
-              <RaisedButton label="Save" primary = {true} style={styles.saveBtnStyle} onClick={this.handleFormSubmit}/>
+              <RaisedButton label={this.state.saveBtnLabel} primary = {true} style={styles.saveBtnStyle} onClick={this.handleFormSubmit} />
             </div>
             <div className = "col-md-1">
-              <RaisedButton label="Clear" secondary={true} style={styles.clearBtnStyle} onClick = {this.handleClearBtn} />
+              <RaisedButton label={this.state.clearBtnLabel} secondary={true} style={styles.clearBtnStyle} onClick = {this.handleClearBtn} />
+            </div>
+            <div className = "col-md-1">
+
             </div>
           </div>
           </div>

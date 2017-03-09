@@ -125,4 +125,129 @@
         <contactPerson></contactPerson>
         <contactOrganization></contactOrganization>
     </personOrganization>
+</contactInformation><?xml version='1.0'?>
+<contactInformation>
+    <voiceContactNumber></voiceContactNumber>
+    <tddTtyContactNumber></tddTtyContactNumber>
+    <facContactNumber></facContactNumber>
+    <emailAddress></emailAddress>
+    <contactAddress>
+        <addressType>mailing</addressType>
+        <address></address>
+        <city></city>
+        <stateOrProvince></stateOrProvince>
+        <postalCode></postalCode>
+        <country></country>
+    </contactAddress>
+    <personOrganization>
+        <contactPerson></contactPerson>
+        <contactOrganization></contactOrganization>
+    </personOrganization>
+    <numTabs>1</numTabs>
+    <addressSelected>1</addressSelected>
+</contactInformation><?xml version='1.0'?>
+<contactInformation>
+    <voiceContactNumber></voiceContactNumber>
+    <tddTtyContactNumber></tddTtyContactNumber>
+    <facContactNumber></facContactNumber>
+    <emailAddress></emailAddress>
+    <hoursOfService>Wed Mar 08 2017 00:15:30 GMT+0530 (IST)</hoursOfService>
+    <contactAddress>
+        <addressType>mailing</addressType>
+        <address></address>
+        <city></city>
+        <stateOrProvince></stateOrProvince>
+        <postalCode></postalCode>
+        <country></country>
+    </contactAddress>
+    <personOrganization>
+        <contactPerson></contactPerson>
+        <contactOrganization></contactOrganization>
+    </personOrganization>
+    <numTabs>1</numTabs>
+    <addressSelected>1</addressSelected>
+</contactInformation><?xml version='1.0'?>
+<contactInformation>
+    <voiceContactNumber></voiceContactNumber>
+    <tddTtyContactNumber></tddTtyContactNumber>
+    <facContactNumber></facContactNumber>
+    <emailAddress></emailAddress>
+    <hoursOfService>12:31 am</hoursOfService>
+    <contactAddress>
+        <addressType>mailing</addressType>
+        <address></address>
+        <city></city>
+        <stateOrProvince></stateOrProvince>
+        <postalCode></postalCode>
+        <country></country>
+    </contactAddress>
+    <personOrganization>
+        <contactPerson></contactPerson>
+        <contactOrganization></contactOrganization>
+    </personOrganization>
+    <numTabs>1</numTabs>
+    <addressSelected>1</addressSelected>
+    <timePickerDate>Wed Mar 08 2017 00:31:27 GMT+0530 (IST)</timePickerDate>
+</contactInformation><?xml version='1.0'?>
+<contactInformation>
+    <voiceContactNumber></voiceContactNumber>
+    <tddTtyContactNumber></tddTtyContactNumber>
+    <facContactNumber></facContactNumber>
+    <emailAddress></emailAddress>
+    <contactAddress>
+        <addressType>mailing</addressType>
+        <address></address>
+        <city></city>
+        <stateOrProvince></stateOrProvince>
+        <postalCode></postalCode>
+        <country></country>
+    </contactAddress>
+    <personOrganization>
+        <contactPerson></contactPerson>
+        <contactOrganization></contactOrganization>
+    </personOrganization>
+    <numTabs>1</numTabs>
+    <addressSelected>1</addressSelected>
+    <timePickerDate>null</timePickerDate>
+    <language>हिंदी</language>
+    <languageLabel>चेंज लैंग्वेज</languageLabel>
+    <appBarTitle>कांटेक्ट इनफार्मेशन</appBarTitle>
+    <associationLabel>एसोसिएशन</associationLabel>
+    <personLabel>पर्सन</personLabel>
+    <organizationLabel>आर्गेनाइजेशन</organizationLabel>
+    <contactOrganizationLabel>कांटेक्ट आर्गेनाइजेशन</contactOrganizationLabel>
+    <contactOrganizationHintLabel>क्सिज़</contactOrganizationHintLabel>
+    <contactPersonLabel>कांटेक्ट पर्सन</contactPersonLabel>
+    <contactPersonHintLabel>अबकि</contactPersonHintLabel>
+    <contactPositionLabel>कांटेक्ट पोजीशन</contactPositionLabel>
+    <contactPositionHintLabel>हर</contactPositionHintLabel>
+    <tabAddressLabel>AddressHindi</tabAddressLabel>
+    <addressTypeLabel>Address Type Hindi</addressTypeLabel>
+    <mailingLabel>mailing Hindi</mailingLabel>
+    <physicalLabel>physical Hindi</physicalLabel>
+    <physicalAndMailingLabel>physical and mailing Hindi</physicalAndMailingLabel>
+    <addLabel>Add Hindi</addLabel>
+    <addHintLabel>B-337 BITS Pilani Hyderabad Campus  Hindi</addHintLabel>
+    <cityLabel>City  Hindi</cityLabel>
+    <cityHintLabel>Hyderabad  Hindi</cityHintLabel>
+    <stateOrProvinceLabel>State or Province  Hindi</stateOrProvinceLabel>
+    <stateOrProvinceHintLabel>Telangana  Hindi</stateOrProvinceHintLabel>
+    <postalCodeLabel>Postal Code  Hindi</postalCodeLabel>
+    <postalCodeHintLabel>500078</postalCodeHintLabel>
+    <countryLabel>Country  Hindi</countryLabel>
+    <countryHintLabel>India  Hindi</countryHintLabel>
+    <contactInformationLabel>Contact Information Hindi</contactInformationLabel>
+    <voiceTelephoneLabel>Voice Telephone hindi</voiceTelephoneLabel>
+    <voiceTelephoneHintLabel>1234567890 Hindi</voiceTelephoneHintLabel>
+    <tddTtyContactNumLabel>TDD/TTY Telephone Hindi</tddTtyContactNumLabel>
+    <tddTtyContactNumHintLabel>1234567890 Hindi</tddTtyContactNumHintLabel>
+    <facTelephoneLabel>Fac Telephone Hindi</facTelephoneLabel>
+    <facTelephoneHintLabel>1234567890 Hindi</facTelephoneHintLabel>
+    <emailAddressLabel>Email Address Hindi</emailAddressLabel>
+    <emailAddressHintLabel>info@gmail.com Hindi</emailAddressHintLabel>
+    <hoursOfServiceLabel>Hours Of Service Hindi</hoursOfServiceLabel>
+    <contactInstructionsLabel>Contact Instructions Hindi</contactInstructionsLabel>
+    <contactInstructionsHintLabel>Early Morning Hindi</contactInstructionsHintLabel>
+    <saveBtnLabel>SAVE Hindi</saveBtnLabel>
+    <clearBtnLabel>CLEAR Hindi</clearBtnLabel>
 </contactInformation>

@@ -91,7 +91,10 @@ var ContactAddress = React.createClass({
     <div>
       <div className = "row">
         <div className = "col-md-4" style = {styles.titleStyle}>
-          <Subheader style = {styles.subHeaderStyle}>Address</Subheader></div>
+          {/*
+          <Subheader style = {styles.subHeaderStyle}>Address</Subheader>
+          */}
+        </div>
         <div className = "col-md-2" />
       </div>
       <div className = "row">
@@ -106,7 +109,7 @@ var ContactAddress = React.createClass({
             value = {this.props.content.addressType}
             floatingLabelFixed={true}/>
           */}
-          <p style = {styles.addressTypeHeadingStyle}>Address Type</p>
+          <p style = {styles.addressTypeHeadingStyle}>{this.props.addressTypeLabel}</p>
           <RadioButtonGroup
             name="addressTypeRadioGrp"
             defaultSelected={this.props.content.addressType}
@@ -114,7 +117,7 @@ var ContactAddress = React.createClass({
             onChange = {this.handleAddressType}>
             <RadioButton
               value="mailing"
-              label="mailing"
+              label={this.props.mailingLabel}
               labelStyle = {styles.radioBtnLabelStyle}
               iconStyle = {styles.radioBtnLabelStyle}
               inputStyle = {styles.radioBtnLabelStyle}
@@ -122,7 +125,7 @@ var ContactAddress = React.createClass({
             />
             <RadioButton
               value="physical"
-              label="physical"
+              label={this.props.physicalLabel}
               labelStyle = {styles.radioBtnLabelStyle}
               iconStyle = {styles.radioBtnLabelStyle}
               inputStyle = {styles.radioBtnLabelStyle}
@@ -130,7 +133,7 @@ var ContactAddress = React.createClass({
             />
             <RadioButton
               value="physical and mailing"
-              label="physical and mailing"
+              label={this.props.physicalAndMailingLabel}
               labelStyle = {styles.radioBtnLabelStyle}
               iconStyle = {styles.radioBtnLabelStyle}
               inputStyle = {styles.radioBtnLabelStyle}
@@ -146,8 +149,8 @@ var ContactAddress = React.createClass({
         <div className = "col-md-4">
           <TextField
             style = {styles.selectFieldStyle}
-            hintText="B-337 BITS Pilani Hyderbad Campus"
-            floatingLabelText="Add"
+            hintText={this.props.addHintLabel}
+            floatingLabelText={this.props.addLabel}
             onChange = {this.handleAddress}
             value = {this.props.content.address}
             floatingLabelFixed={true}
@@ -157,8 +160,8 @@ var ContactAddress = React.createClass({
         <div className = "col-md-4">
           <TextField
             style = {styles.selectFieldStyle}
-            hintText="Hyderabad"
-            floatingLabelText="City"
+            hintText={this.props.cityHintLabel}
+            floatingLabelText={this.props.cityLabel}
             value = {this.props.content.city}
             onChange={this.handleCity}
             floatingLabelFixed={true}/>
@@ -170,8 +173,8 @@ var ContactAddress = React.createClass({
         <div className = "col-md-4">
           <TextField
             style = {styles.selectFieldStyle}
-            hintText="Telangana"
-            floatingLabelText="State or Province"
+            hintText={this.props.stateOrProvinceHintLabel}
+            floatingLabelText={this.props.stateOrProvinceLabel}
             value = {this.props.content.stateOrProvince}
             onChange = {this.handleStateOrProvince}
             floatingLabelFixed={true}/>
@@ -180,8 +183,8 @@ var ContactAddress = React.createClass({
         <div className = "col-md-4">
           <TextField
             style = {styles.selectFieldStyle}
-            hintText="500078"
-            floatingLabelText="Postal Code"
+            hintText={this.props.postalCodeHintLabel}
+            floatingLabelText={this.props.postalCodeLabel}
             value = {this.props.content.postalCode}
             onChange = {this.handlePostalCode}
             floatingLabelFixed={true} />
@@ -193,10 +196,10 @@ var ContactAddress = React.createClass({
         <div className = "col-md-4">
           <TextField
             style = {styles.selectFieldStyle}
-            hintText="India"
+            hintText={this.props.countryHintLabel}
             onChange = {this.handleCountry}
             value = {this.props.content.country}
-            floatingLabelText="Country"
+            floatingLabelText={this.props.countryLabel}
             floatingLabelFixed={true}/>
         </div>
         <div className = "col-md-1" />

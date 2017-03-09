@@ -23,8 +23,11 @@
     "js2xmlparser": "^2.0.2",
     "lodash": "^4.13.1",
     "material-ui": "^0.16.7",
+    "moment": "^2.17.1",
+    "rc-time-picker": "^2.2.2",
     "react-bootstrap": "^0.30.7",
     "react-tap-event-plugin": "^2.0.1",
+    "react-tooltip": "^3.2.7",
     "xml-parser": "^1.2.1",
     "xml2json": "^0.11.0"
   }

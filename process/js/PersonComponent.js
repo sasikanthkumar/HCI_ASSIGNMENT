@@ -44,8 +44,8 @@ var PersonComponent = React.createClass({
         <div className = "col-md-4">
           <TextField
             style = {styles.selectFieldStyle}
-            hintText="abc"
-            floatingLabelText="Contact Person"
+            hintText={this.props.contactPersonHintLabel}
+            floatingLabelText={this.props.contactPersonLabel}
             floatingLabelFixed={true}
             value = {this.props.content.contactPerson}
             onChange = {this.handleContactPerson}/>
@@ -54,10 +54,10 @@ var PersonComponent = React.createClass({
         <div className = "col-md-4">
           <TextField
             style = {styles.selectFieldStyle}
-            hintText="xyz"
+            hintText={this.props.contactOrganizationHintLabel}
             onChange = {this.handleContactOrganization}
             value = {this.props.content.contactOrganization}
-            floatingLabelText="Contact Organization"
+            floatingLabelText={this.props.contactOrganizationLabel}
             floatingLabelFixed={true}/>
         </div>
         <div className = "col-md-2"/>

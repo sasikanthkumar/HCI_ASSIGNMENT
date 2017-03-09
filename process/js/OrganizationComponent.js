@@ -30,8 +30,8 @@ var OrganizationComponent = React.createClass({
         <div className = "col-md-4">
           <TextField
             style = {styles.selectFieldStyle}
-            hintText="xyz"
-            floatingLabelText="Contact Organization"
+            hintText={this.props.contactOrganizationHintLabel}
+            floatingLabelText={this.props.contactOrganizationLabel}
             floatingLabelFixed={true}
             onChange = {this.handleContactOrganization}
             value = {this.props.content.contactOrganization}/>
@@ -39,10 +39,10 @@ var OrganizationComponent = React.createClass({
         <div className = "col-md-4">
           <TextField
             style = {styles.selectFieldStyle}
-            hintText="abc"
+            hintText={this.props.contactPersonHintLabel}
+            floatingLabelText={this.props.contactPersonLabel}
             onChange = {this.handleContactPerson}
             value = {this.props.content.contactPerson}
-            floatingLabelText="Contact Person"
             floatingLabelFixed={true}/>
         </div>
         <div className = "col-md-2"/>
